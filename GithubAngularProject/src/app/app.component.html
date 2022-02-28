@@ -1,0 +1,26 @@
+
+<div class="container">
+    <div>
+        <div ngbDropdown class="d-inline-block md-4">
+            <button class="btn btn-outline-primary" id="dropdownBasic1"
+                ngbDropdownToggle>{{dropdownValueChoosen}}</button>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1" (click)="dropdownValueEvent($event)">
+                <button ngbDropdownItem value="getUser"> Search User</button>
+                <button ngbDropdownItem value="getRepo">Search Repo</button>
+            </div>
+        </div>
+    </div>
+    <div>
+        <input type="text" class="form-control md-4" [formControl]="search" id="exampleFormControlInput1"
+            placeholder="Search">
+    </div>
+</div>
+
+<ng-container *ngIf="this.searchType === 'getUser'">
+<app-search-user [searchValue]="this.searchValue" [searchType]="this.searchType"></app-search-user>
+</ng-container>
+
+<ng-container *ngIf="this.searchType === 'getRepo'">
+  <app-search-repos [searchValue]="this.searchValue" [searchType]="this.searchType"></app-search-repos>
+    </ng-container>
+

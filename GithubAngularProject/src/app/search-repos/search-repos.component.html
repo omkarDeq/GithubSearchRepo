@@ -1,0 +1,47 @@
+
+  <div class="d-flex justify-content-center m-5"  *ngIf="isLoading">
+    <div class="spinner-border" role="status">
+      <!-- <span class="sr-only">Loading...</span> -->
+    </div>
+  </div>
+
+<ng-container *ngIf="repodata">
+    <div class="create-cards">
+        
+        <div class="cards md-4" *ngFor="let repo of repodata.data.items">
+            <div class="div-img">
+                <img  src={{repo.owner.avatar_url}} alt=""
+                 class="user_img"
+                  alt="profile-photo">
+            </div>
+            <div class="cards-body">
+                <h5 class="card-title">  {{repo.name}} </h5>
+                <p class="card-text"><a [href]="repo.html_url" target="_blank">{{repo.full_name}}</a></p>
+                <p class="card-text"> <span><strong>Description : </strong></span> {{repo.description}}</p>
+                <p class="card-text"> <span><strong>Stars : </strong></span> {{repo.stargazers_count}}</p>
+            </div>
+        </div>
+    </div>
+    <ngb-pagination class="d-flex justify-content-center"
+    [(page)]="page" [pageSize]="pageSize"
+     [collectionSize]="repodata.data.total_count"
+     [maxSize]="6" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"
+        (pageChange)="changePage()"></ngb-pagination>
+</ng-container>
+
+
+<ng-container *ngIf="!repodata && !isLoading  && !alert">
+
+        <ngb-alert class="info-alert" [dismissible]="false">
+       <p>Enter something to search</p>
+       <p>You can either search for Repositories or Users . Choose from the dropdown besides the search bar</p>
+        </ngb-alert>
+
+</ng-container>
+
+
+<div *ngIf="alert">
+    <ngb-alert class="error-message" [type]="'danger'" (closed)="closeAlert(alert)">{{ alert }}</ngb-alert>
+</div>
+
+

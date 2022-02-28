@@ -1,0 +1,50 @@
+
+.create-cards{
+    padding: 1rem;
+}
+
+.cards {
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    display: flex;
+    gap: 1rem;
+    width: 80%;
+    margin: 2rem 2rem;
+  }
+  
+  /* On mouse-over, add a deeper shadow */
+  .cards:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+  
+  .cards-body {
+      padding: 2rem;
+    /* padding: 2px 16px; */
+    flex-grow: 2;
+  }
+
+.div-img
+{
+    align-self: center;
+    margin-left: 1rem;
+}
+
+  .user_img{
+    flex-shrink:0;
+    width:100px;
+    height:100px;
+    background-color: rgb(29, 29, 29);
+    align-self: center;
+}
+
+.info-alert{
+  max-width: 80%;
+  margin: 3rem 5rem;
+  text-align: center;
+
+}
+  
+.error-message{
+  margin-top: 2rem;
+}

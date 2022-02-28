@@ -1,0 +1,41 @@
+
+  <div class="d-flex justify-content-center m-5"  *ngIf="isLoading">
+    <div class="spinner-border" role="status">
+      <!-- <span class="sr-only">Loading...</span> -->
+    </div>
+  </div>
+
+
+<ng-container *ngIf="userdata">
+    <div class="create-cards">
+        <div class="cards md-4" *ngFor="let user of userdata.data.items">
+            <div class="div-img">
+                <img  src={{user.avatar_url}} alt=""
+                 class="user_img"
+                  alt="profile-photo">
+            </div>
+            <div class="cards-body">
+                <h5 class="card-title"> {{user.name}}</h5>
+                <p class="card-text"> <span><strong>Followers : </strong></span> {{user.followers}}</p>
+                <p class="card-text"> <span><strong>Following : </strong></span> {{user.following}}</p>
+                <p class="card-text"> <span><strong>Member Since : </strong></span> {{user.created_at | date:'mediumDate' }}</p>
+            </div>
+        </div>
+    </div>
+    <ngb-pagination class="d-flex justify-content-center" [(page)]="page" [pageSize]="pageSize"
+     [collectionSize]="userdata.data.total_counts"
+     [maxSize]="6" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"
+        (pageChange)="changePage()"></ngb-pagination>
+</ng-container>
+
+
+<ng-container *ngIf="!userdata && !isLoading && !alert">
+    <ngb-alert class="info-alert" [dismissible]="false">
+        <p>Enter something to search</p>
+        <p>You can either search for Repositories or Users . Choose from the dropdown besides the search bar</p>
+         </ngb-alert>
+</ng-container>
+
+<div *ngIf="alert">
+    <ngb-alert class="error-message" [type]="'danger'" (closed)="closeAlert(alert)">{{ alert }}</ngb-alert>
+</div>
