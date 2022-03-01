@@ -22,9 +22,7 @@ export class SearchReposComponent implements OnInit,OnChanges {
   }
 
 
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log("simple change object : "+ JSON.stringify(changes));
-    
+  ngOnChanges(changes: SimpleChanges): void { 
     this.checkValidParams();
   }
 
@@ -35,7 +33,6 @@ export class SearchReposComponent implements OnInit,OnChanges {
   checkValidParams(){
     if(this.searchType && this.searchValue){
      if(this.searchType === 'getRepo'){
-    console.log("getting repo data ...");
     this.isLoading=true;
     this.getRepoData();
     }
@@ -55,13 +52,11 @@ export class SearchReposComponent implements OnInit,OnChanges {
     this.dataService.getRepos(this.searchValue,this.page,this.pageSize).subscribe(
       repoData =>{
         this.isLoading=false;
-        console.log(repoData);
         this.repodata = repoData;
         
       },
       error =>{
         this.isLoading=false;
-        console.log(error);
         this.alert=error.statusText;
         
       }

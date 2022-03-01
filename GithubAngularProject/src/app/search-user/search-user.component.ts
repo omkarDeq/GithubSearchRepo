@@ -34,7 +34,6 @@ export class SearchUserComponent implements OnInit,OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log("simple change object : "+ JSON.stringify(changes));
     
     this.checkValidParams();
   }
@@ -46,7 +45,6 @@ export class SearchUserComponent implements OnInit,OnChanges {
   checkValidParams(){
     if(this.searchType && this.searchValue){
      if(this.searchType === 'getUser'){
-    console.log("getting user data ...");
     this.isLoading=true;
     this.getUserData();
     }
@@ -68,7 +66,6 @@ export class SearchUserComponent implements OnInit,OnChanges {
       },
       error =>{
         this.isLoading=false;
-        console.log(error);
         this.alert=error.statusText;
         
       }
