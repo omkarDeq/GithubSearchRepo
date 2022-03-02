@@ -25,13 +25,13 @@
 </ng-container>
 
 
-<ng-container *ngIf="!userdata && !isLoading && !alert">
+<ng-container *ngIf="!userdata && !isLoading && !errorMessage">
     <ngb-alert class="info-alert" [dismissible]="false">
         <p>Enter something to search</p>
         <p>You can either search for Repositories or Users . Choose from the dropdown besides the search bar</p>
     </ngb-alert>
 </ng-container>
 
-<div *ngIf="alert">
-    <ngb-alert class="error-message" [type]="'danger'" (closed)="closeAlert(alert)">{{ alert }}</ngb-alert>
+<div *ngIf="errorMessage">
+    <ngb-alert class="error-message" [type]="'danger'" (closed)="closeAlert()">{{ errorMessage }}</ngb-alert>
 </div>

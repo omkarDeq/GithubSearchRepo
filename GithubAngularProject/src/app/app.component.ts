@@ -10,7 +10,7 @@ import { debounceTime, filter, map, switchMap, tap } from 'rxjs';
 })
 export class AppComponent implements OnInit {
   title = 'GithubAngularProject';
-  dropdownValueChoosen = 'Choose your search parameter';
+  dropdownValueChoosen : string = 'Choose your search parameter';
   public search: FormControl;
   searchValue: string = '';
   searchType: string = '';

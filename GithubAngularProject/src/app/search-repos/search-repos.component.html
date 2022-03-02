@@ -24,7 +24,7 @@
 </ng-container>
 
 
-<ng-container *ngIf="!repodata && !isLoading  && !alert">
+<ng-container *ngIf="!repodata && !isLoading  && !errorMessage">
 
     <ngb-alert class="info-alert" [dismissible]="false">
         <p>Enter something to search</p>
@@ -34,6 +34,6 @@
 </ng-container>
 
 
-<div *ngIf="alert">
-    <ngb-alert class="error-message" [type]="'danger'" (closed)="closeAlert(alert)">{{ alert }}</ngb-alert>
+<div *ngIf="errorMessage">
+    <ngb-alert class="error-message" [type]="'danger'" (closed)="closeAlert()">{{ errorMessage }}</ngb-alert>
 </div>
